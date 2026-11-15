@@ -16,10 +16,6 @@ solution.DefineCStaticLibrary("libwebp", function()
 		"."
 	}
 
-	filter "system:windows"
-		systemversion "latest"
-		cppdialect "C++20"
-
 	filter { "system:windows", "toolset:clang", "files:src/dsp/**_sse41.c" }
 		buildoptions { "-msse4.1" }          -- Implies SSE2/SSE3/SSSE3.
 
@@ -44,16 +40,6 @@ solution.DefineCStaticLibrary("libwebp", function()
 
 	filter { "system:linux", "architecture:x86_64", "files:src/dsp/**_sse2.c" }
 		buildoptions { "-msse2" }            -- Baseline on x86_64, required on i386.
-
-	filter "system:linux"
-		pic "On"
-		systemversion "latest"
-		cppdialect "C++20"
-
-	filter "system:linux"
-		pic "On"
-		systemversion "latest"
-		cppdialect "C++20"
 
 	filter "configurations:Debug"
 		runtime "Debug"
